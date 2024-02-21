@@ -1,0 +1,33 @@
+###User api reqs
+###user creation
+post http://localhost:4000/user-api/user
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "username":"ravi",
+    "password":"ravi",
+    "email":"ravi@mail.com"
+}
+
+
+#### user login
+post http://localhost:4000/user-api/login
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "username":"ravi",
+    "password":"ravi"
+   
+}
+
+###reading articles of all users
+get http://localhost:4000/user-api/articles
+
+
+###
+get http://localhost:4000/author-api/test-author
+
+###
+get http://localhost:4000/admin-api/test-admin
