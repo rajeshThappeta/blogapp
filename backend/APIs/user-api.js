@@ -6,12 +6,16 @@ const expressAsyncHandler=require("express-async-handler")
 const jwt=require('jsonwebtoken')
 require('dotenv').config()
 
+
 let usercollection;
 //get usercollection app
 userApp.use((req,res,next)=>{
     usercollection=req.app.get('userscollection')
     next()
 })
+
+
+
 
 //user registration route
 userApp.post('/user',expressAsyncHandler(async(req,res)=>{
@@ -58,12 +62,16 @@ userApp.post('/login',expressAsyncHandler(async(req,res)=>{
     }
 }))
 
+
+
+
+
 //get articles of all users
 userApp.get('/articles',expressAsyncHandler(async(req,res)=>{
     //get articlescollection from express app
     const articlescollection=req.app.get('articlescollection')
     //get all articles
-    let articlesList=await articlescollection.find().toArray()
+    let articlesList=await articlescollection.find({status:true}).toArray()
     //send res
     res.send({message:"articles",payload:articlesList})
 }))
